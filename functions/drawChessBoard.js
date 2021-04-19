@@ -1,15 +1,11 @@
-var constants = require("../constants");
+var constants = require("../constants/chessBoard");
 
 function drawChessBoard() {
   const chessBoard = [];
-  for (let rowIndex = 0; rowIndex < constants.NO_OF_ROWS; rowIndex++) {
+  for (let rowIndex = 0; rowIndex < constants.ROWS; rowIndex++) {
     const columnCells = [];
-    for (
-      let columnIndex = 0;
-      columnIndex < constants.NO_OF_COLUMNS;
-      columnIndex++
-    ) {
-      columnCells.push(`${constants.CELL_LETTERS[rowIndex]}${columnIndex + 1}`);
+    for (let columnIndex = 0; columnIndex < constants.COLUMNS; columnIndex++) {
+      columnCells.push(`${constants.LETTERS[rowIndex]}${columnIndex + 1}`);
     }
     chessBoard[rowIndex] = columnCells;
   }
