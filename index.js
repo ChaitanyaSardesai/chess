@@ -1,8 +1,4 @@
-var Piece = require("./models/piece");
-var drawChessBoard = require("./functions/drawChessBoard");
-var getVerticalPositions = require("./functions/getDiagonalPositions");
+const getPossibleMoves = require("./functions/getPossibleMoves");
 
-//const possibleMovePositions = getPossibleMoves("King", "D5");
-const result = getVerticalPositions(4, 2, 3, 2, 4, 2);
-const check = new Piece(true, false, false, false);
+const result = getPossibleMoves("Queen", "D5");
 console.log(result);
