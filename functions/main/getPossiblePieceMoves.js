@@ -7,8 +7,8 @@ const {
   PAWN,
 } = require("../../constants/chessBoard");
 const composeChessBoardMap = require("../util/composeChessBoardMap");
-const getCellIds = require("../util/getCellsIds");
-const getPositions = require("./getPieceWisePositions");
+const getCellIdsString = require("../util/getCellsIdsString");
+const getPieceWisePositions = require("./getPieceWisePositions");
 
 function getPossiblePieceMoves(pieceType, position) {
   const chessBoard = composeChessBoardMap();
@@ -29,35 +29,37 @@ function getCurrentPositionIndices(chessBoardArray, position) {
 function getPieceObject(pieceType, chessBoard, rowIndex, columnIndex) {
   switch (pieceType) {
     case KING:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForKing(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForKing(+rowIndex, +columnIndex)
       );
     case QUEEN:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForQueen(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForQueen(+rowIndex, +columnIndex)
       );
     case BISHOP:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForBishop(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForBishop(+rowIndex, +columnIndex)
       );
     case HORSE:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForHorse(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForHorse(+rowIndex, +columnIndex)
       );
     case ROOK:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForRook(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForRook(+rowIndex, +columnIndex)
       );
     case PAWN:
-      return getCellIds(
+      return getCellIdsString(
         chessBoard,
-        getPositions.getPositionsForPawn(+rowIndex, +columnIndex)
+        getPieceWisePositions.getPositionsForPawn(+rowIndex, +columnIndex)
       );
+    default:
+      return "Please check the piece type. The name should start with a capital letter. Ex. King";
   }
 }
 

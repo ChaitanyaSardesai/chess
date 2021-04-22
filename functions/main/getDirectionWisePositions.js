@@ -117,15 +117,17 @@ function getRightDownwardSteps(
   rowIndex,
   columnIndex
 ) {
-  if (rightDownwardSteps > 0) {
-    for (let index = 0; index < rightDownwardSteps; index++) {
-      rowIndices.push([rowIndex - index - 1, columnIndex + index + 1]);
-    }
-  } else {
-    while (rowIndex > 0 && columnIndex < COLUMNS) {
-      rowIndex -= 1;
-      columnIndex += 1;
-      rowIndices.push([rowIndex, columnIndex]);
+  if (rightDownwardSteps !== 0) {
+    if (rightDownwardSteps > 0) {
+      for (let index = 0; index < rightDownwardSteps; index++) {
+        rowIndices.push([rowIndex - index - 1, columnIndex + index + 1]);
+      }
+    } else {
+      while (rowIndex > 0 && columnIndex < COLUMNS) {
+        rowIndex -= 1;
+        columnIndex += 1;
+        rowIndices.push([rowIndex, columnIndex]);
+      }
     }
   }
   return rowIndices;
@@ -137,15 +139,17 @@ function getLeftDownwardSteps(
   rowIndex,
   columnIndex
 ) {
-  if (leftDownwardSteps > 0) {
-    for (let index = 0; index < leftDownwardSteps; index++) {
-      rowIndices.push([rowIndex - index - 1, columnIndex - index - 1]);
-    }
-  } else {
-    while (rowIndex > 0 && columnIndex > 0) {
-      rowIndex -= 1;
-      columnIndex -= 1;
-      rowIndices.push([rowIndex, columnIndex]);
+  if (leftDownwardSteps !== 0) {
+    if (leftDownwardSteps > 0) {
+      for (let index = 0; index < leftDownwardSteps; index++) {
+        rowIndices.push([rowIndex - index - 1, columnIndex - index - 1]);
+      }
+    } else {
+      while (rowIndex > 0 && columnIndex > 0) {
+        rowIndex -= 1;
+        columnIndex -= 1;
+        rowIndices.push([rowIndex, columnIndex]);
+      }
     }
   }
   return rowIndices;

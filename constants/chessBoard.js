@@ -5,8 +5,8 @@ const KING = "King";
 const QUEEN = "Queen";
 const BISHOP = "Bishop";
 const ROOK = "Rook";
-const HORSE = "HORSE";
-const PAWN = "PAWN";
+const HORSE = "Horse";
+const PAWN = "Pawn";
 
 module.exports = {
   ROWS: ROWS,
