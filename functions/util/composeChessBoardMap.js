@@ -1,6 +1,6 @@
-var constants = require("../constants/chessBoard");
+var constants = require("../../constants/chessBoard");
 
-function drawChessBoard() {
+function composeChessBoardMap() {
   const chessBoard = new Map();
   for (let rowIndex = 0; rowIndex < constants.ROWS; rowIndex++) {
     for (let columnIndex = 0; columnIndex < constants.COLUMNS; columnIndex++) {
@@ -13,4 +13,4 @@ function drawChessBoard() {
   return chessBoard;
 }
 
-module.exports = drawChessBoard;
+module.exports = composeChessBoardMap;

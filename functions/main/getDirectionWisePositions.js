@@ -1,5 +1,5 @@
-const { ROWS, COLUMNS } = require("../constants/chessBoard");
-const sortAscending = require("./sortArray");
+const { ROWS, COLUMNS } = require("../../constants/chessBoard");
+const sortAscending = require("../util/sortArray");
 
 function getVerticalPositions(rowIndex, upwardSteps, downwardSteps) {
   const rowIndices = [];

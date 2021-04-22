@@ -1,9 +1,17 @@
-const drawChessBoard = require("./drawChessBoard");
-const getCells = require("./getCells");
+const {
+  KING,
+  QUEEN,
+  BISHOP,
+  HORSE,
+  ROOK,
+  PAWN,
+} = require("../../constants/chessBoard");
+const composeChessBoardMap = require("../util/composeChessBoardMap");
+const getCellIds = require("../util/getCellsIds");
 const getPositions = require("./getPieceWisePositions");
 
-function getPossibleMoves(pieceType, position) {
-  const chessBoard = drawChessBoard();
+function getPossiblePieceMoves(pieceType, position) {
+  const chessBoard = composeChessBoardMap();
   const indices = getCurrentPositionIndices(
     Array.from(chessBoard.entries()),
     position
@@ -20,37 +28,37 @@ function getCurrentPositionIndices(chessBoardArray, position) {
 
 function getPieceObject(pieceType, chessBoard, rowIndex, columnIndex) {
   switch (pieceType) {
-    case "King":
-      return getCells(
+    case KING:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForKing(+rowIndex, +columnIndex)
       );
-    case "Queen":
-      return getCells(
+    case QUEEN:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForQueen(+rowIndex, +columnIndex)
       );
-    case "Bishop":
-      return getCells(
+    case BISHOP:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForBishop(+rowIndex, +columnIndex)
       );
-    case "Horse":
-      return getCells(
+    case HORSE:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForHorse(+rowIndex, +columnIndex)
       );
-    case "Rook":
-      return getCells(
+    case ROOK:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForRook(+rowIndex, +columnIndex)
       );
-    case "Pawn":
-      return getCells(
+    case PAWN:
+      return getCellIds(
         chessBoard,
         getPositions.getPositionsForPawn(+rowIndex, +columnIndex)
       );
   }
 }
 
-module.exports = getPossibleMoves;
+module.exports = getPossiblePieceMoves;
