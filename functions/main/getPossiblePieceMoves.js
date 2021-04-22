@@ -14,7 +14,7 @@ function getPossiblePieceMoves(pieceType, position) {
   const chessBoard = composeChessBoardMap();
   const indices = getCurrentPositionIndices(
     Array.from(chessBoard.entries()),
-    position
+    position.toUpperCase()
   ).split("_");
   const piece = getPieceObject(pieceType, chessBoard, indices[0], indices[1]);
   return piece;
