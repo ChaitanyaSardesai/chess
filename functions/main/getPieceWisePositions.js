@@ -1,6 +1,7 @@
-var getDirectionWisePositions = require("../main/getDirectionWisePositions");
-var appendIndices = require("../util/appendIndices");
+const getDirectionWisePositions = require("../main/getDirectionWisePositions");
+const appendIndices = require("../util/appendIndices");
 const { ROWS, COLUMNS } = require("../../constants/chessBoard");
+const calculateHorseTravel = require("../util/calculateHorseTravel");
 
 function getPositionsForKing(rowIndex, columnIndex) {
   const moves = [];
@@ -32,16 +33,7 @@ function getPositionsForKing(rowIndex, columnIndex) {
 
 function getPositionsForQueen(rowIndex, columnIndex) {
   const moves = getPositionsForRook(rowIndex, columnIndex);
-  moves.push(
-    ...getDirectionWisePositions.getDiagonalPositions(
-      rowIndex,
-      columnIndex,
-      -1,
-      -1,
-      -1,
-      -1
-    )
-  );
+  moves.push(...getPositionsForBishop(rowIndex, columnIndex));
 
   return moves;
 }
@@ -59,44 +51,13 @@ function getPositionsForBishop(rowIndex, columnIndex) {
 
 function getPositionsForHorse(rowIndex, columnIndex) {
   const moves = [];
-  let verticalTravel = getDirectionWisePositions.getVerticalPositions(
-    rowIndex,
-    2,
-    0
-  );
+
+  moves.push(...calculateHorseTravel.getUpwardTravel(rowIndex, columnIndex));
+
+  moves.push(...calculateHorseTravel.getDownwardTravel(rowIndex, columnIndex));
+
   moves.push(
-    ...appendIndices.appendRowIndices(
-      verticalTravel[1],
-      getDirectionWisePositions.getHorizontalPositions(columnIndex, 1, 1)
-    )
-  );
-  let downwardTravel = getDirectionWisePositions.getVerticalPositions(
-    rowIndex,
-    0,
-    2
-  );
-  moves.push(
-    ...appendIndices.appendRowIndices(
-      downwardTravel[0],
-      getDirectionWisePositions.getHorizontalPositions(columnIndex, 1, 1)
-    )
-  );
-  let horizontalTravel = getDirectionWisePositions.getHorizontalPositions(
-    columnIndex,
-    2,
-    2
-  );
-  moves.push(
-    ...appendIndices.appendColumnIndices(
-      horizontalTravel[0],
-      getDirectionWisePositions.getVerticalPositions(rowIndex, 1, 1)
-    )
-  );
-  moves.push(
-    ...appendIndices.appendColumnIndices(
-      horizontalTravel[3],
-      getDirectionWisePositions.getVerticalPositions(rowIndex, 1, 1)
-    )
+    ...calculateHorseTravel.getHorizontalTravel(rowIndex, columnIndex)
   );
 
   return moves;

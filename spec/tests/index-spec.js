@@ -1,5 +1,5 @@
 const getPossiblePieceMoves = require("../../functions/main/getPossiblePieceMoves");
-var indexApp = require("../../index");
+const indexApp = require("../../index");
 
 describe("Index", function () {
   it("should return possible moves for King", function () {

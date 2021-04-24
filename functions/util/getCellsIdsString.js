@@ -5,7 +5,7 @@ function getCellIdsString(chessBoard, positions) {
   const result = cellPositions.filter(Boolean).join(", ");
   return result !== ""
     ? result
-    : "The chess piece doesn't have possible moves.";
+    : "The chess piece doesn't have any possible moves.";
 }
 
 module.exports = getCellIdsString;

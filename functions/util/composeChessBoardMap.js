@@ -1,4 +1,4 @@
-var constants = require("../../constants/chessBoard");
+const constants = require("../../constants/chessBoard");
 
 function composeChessBoardMap() {
   const chessBoard = new Map();
