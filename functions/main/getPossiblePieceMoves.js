@@ -59,7 +59,7 @@ function getPieceObject(pieceType, chessBoard, rowIndex, columnIndex) {
         getPieceWisePositions.getPositionsForPawn(+rowIndex, +columnIndex)
       );
     default:
-      return "Please check the piece type. The name should start with a capital letter. Ex. King";
+      return "Please check the piece type. The name should start with a capital letter. Ex. King.";
   }
 }
 

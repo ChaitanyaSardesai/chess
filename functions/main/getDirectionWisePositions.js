@@ -42,77 +42,90 @@ function getDiagonalPositions(
   rightDownwardSteps,
   leftDownwardSteps
 ) {
-  let rowIndices = [];
-  rowIndices = [
-    ...getRightUpwardSteps(rowIndices, rightUpwardSteps, rowIndex, columnIndex),
+  let rowColumnPairs = [];
+  rowColumnPairs = [
+    ...getRightUpwardSteps(
+      rowColumnPairs,
+      rightUpwardSteps,
+      rowIndex,
+      columnIndex
+    ),
   ];
 
-  rowIndices = [
-    ...getLeftUpwardSteps(rowIndices, leftUpwardSteps, rowIndex, columnIndex),
+  rowColumnPairs = [
+    ...getLeftUpwardSteps(
+      rowColumnPairs,
+      leftUpwardSteps,
+      rowIndex,
+      columnIndex
+    ),
   ];
 
-  rowIndices = [
+  rowColumnPairs = [
     ...getRightDownwardSteps(
-      rowIndices,
+      rowColumnPairs,
       rightDownwardSteps,
       rowIndex,
       columnIndex
     ),
   ];
 
-  rowIndices = [
+  rowColumnPairs = [
     ...getLeftDownwardSteps(
-      rowIndices,
+      rowColumnPairs,
       leftDownwardSteps,
       rowIndex,
       columnIndex
     ),
   ];
-  return rowIndices;
+
+  return rowColumnPairs;
 }
 
 function getRightUpwardSteps(
-  rowIndices,
+  rowColumnPairs,
   rightUpwardSteps,
   rowIndex,
   columnIndex
 ) {
   if (rightUpwardSteps > 0) {
     for (let index = 0; index < rightUpwardSteps; index++) {
-      rowIndices.push([rowIndex + index + 1, columnIndex + index + 1]);
+      rowColumnPairs.push([rowIndex + index + 1, columnIndex + index + 1]);
     }
   } else {
     while (rowIndex < ROWS && columnIndex < COLUMNS) {
       rowIndex += 1;
       columnIndex += 1;
-      rowIndices.push([rowIndex, columnIndex]);
+      rowColumnPairs.push([rowIndex, columnIndex]);
     }
   }
-  return rowIndices;
+
+  return rowColumnPairs;
 }
 
 function getLeftUpwardSteps(
-  rowIndices,
+  rowColumnPairs,
   leftUpwardSteps,
   rowIndex,
   columnIndex
 ) {
   if (leftUpwardSteps > 0) {
     for (let index = 0; index < leftUpwardSteps; index++) {
-      rowIndices.push([rowIndex + index + 1, columnIndex - index - 1]);
+      rowColumnPairs.push([rowIndex + index + 1, columnIndex - index - 1]);
     }
   } else {
     while (rowIndex < ROWS && columnIndex > 0) {
       rowIndex += 1;
       columnIndex -= 1;
-      rowIndices.push([rowIndex, columnIndex]);
+      rowColumnPairs.push([rowIndex, columnIndex]);
     }
   }
-  return rowIndices;
+
+  return rowColumnPairs;
 }
 
 function getRightDownwardSteps(
-  rowIndices,
+  rowColumnPairs,
   rightDownwardSteps,
   rowIndex,
   columnIndex
@@ -120,21 +133,22 @@ function getRightDownwardSteps(
   if (rightDownwardSteps !== 0) {
     if (rightDownwardSteps > 0) {
       for (let index = 0; index < rightDownwardSteps; index++) {
-        rowIndices.push([rowIndex - index - 1, columnIndex + index + 1]);
+        rowColumnPairs.push([rowIndex - index - 1, columnIndex + index + 1]);
       }
     } else {
       while (rowIndex > 0 && columnIndex < COLUMNS) {
         rowIndex -= 1;
         columnIndex += 1;
-        rowIndices.push([rowIndex, columnIndex]);
+        rowColumnPairs.push([rowIndex, columnIndex]);
       }
     }
   }
-  return rowIndices;
+
+  return rowColumnPairs;
 }
 
 function getLeftDownwardSteps(
-  rowIndices,
+  rowColumnPairs,
   leftDownwardSteps,
   rowIndex,
   columnIndex
@@ -142,17 +156,17 @@ function getLeftDownwardSteps(
   if (leftDownwardSteps !== 0) {
     if (leftDownwardSteps > 0) {
       for (let index = 0; index < leftDownwardSteps; index++) {
-        rowIndices.push([rowIndex - index - 1, columnIndex - index - 1]);
+        rowColumnPairs.push([rowIndex - index - 1, columnIndex - index - 1]);
       }
     } else {
       while (rowIndex > 0 && columnIndex > 0) {
         rowIndex -= 1;
         columnIndex -= 1;
-        rowIndices.push([rowIndex, columnIndex]);
+        rowColumnPairs.push([rowIndex, columnIndex]);
       }
     }
   }
-  return rowIndices;
+  return rowColumnPairs;
 }
 
 module.exports = {
